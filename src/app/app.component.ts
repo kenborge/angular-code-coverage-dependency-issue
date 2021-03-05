@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: ''
 })
-export class AppComponent {
-  title = 'test-app2';
+export class ParentComponent {
+  constructor(private el: ElementRef) {
+    el.nativeElement.focus();
+  }
+}
+
+@Component({
+  template: ''
+})
+export class ChildComponent extends ParentComponent {
+  thisLineCausesError = 1;
 }
